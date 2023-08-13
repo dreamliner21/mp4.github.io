@@ -1,10 +1,23 @@
-<video id="myVideo" autoplay muted>
-     <source src="video.mp4" type="video/mp4">
-   </video>
+<video id="myVideo" controls autoplay muted>
+   <source src="video.mp4" type="video/mp4">
+</video>
 
-   <script>
-     document.addEventListener("DOMContentLoaded", function() {
-       var video = document.getElementById("myVideo");
-       video.play();
-     });
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById("myVideo");
+      video.play();
+
+      // Kontrol Fullscreen
+      video.addEventListener('click', function() {
+         if (video.requestFullscreen) {
+            video.requestFullscreen();
+         } else if (video.mozRequestFullScreen) { // Mozilla Firefox
+            video.mozRequestFullScreen();
+         } else if (video.webkitRequestFullscreen) { // Chrome, Safari, dan Opera
+            video.webkitRequestFullscreen();
+         } else if (video.msRequestFullscreen) { // Internet Explorer & Edge
+            video.msRequestFullscreen();
+         }
+      });
+   });
    </script>
